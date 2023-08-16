@@ -9,7 +9,7 @@ const Timeline = ({ items }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentDate(new Date());
-    }, 2000)
+    }, 1000)
 
     return () => clearInterval(intervalId);
   }, []);
