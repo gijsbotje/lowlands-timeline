@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Timeline from '@/components/Timeline';
 
 
@@ -13,9 +12,9 @@ async function getActs() {
   }
 
   const {acts} = await res.json() || {};
-  const formattedActs = (acts || []).reduce((acc, {value: act, id}) => [...acc, { title: act?.title, category: act?.category?.id, id, heroImage: act?.heroImage, startDate: act?.dates?.at(0)?.startDate, endDate: act?.dates?.at(0)?.endDate }], []);
-  const filteredActs = formattedActs.filter(act => act?.category === 1);
-  console.log(filteredActs);
+  const formattedActs = (acts || []).reduce((acc: any, {value: act, id}: any) => [...acc, { title: act?.title, category: act?.category?.id, id, heroImage: act?.heroImage, startDate: act?.dates?.at(0)?.startDate, endDate: act?.dates?.at(0)?.endDate }], []);
+  const filteredActs = formattedActs.filter((act: { category: number; }) => act?.category === 1);
+  // @ts-ignore
   return filteredActs.sort((a, b) => new Date(a?.startDate) - new Date(b?.startDate));
 }
 

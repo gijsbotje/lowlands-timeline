@@ -1,8 +1,8 @@
 'use client';
 import NextImage from 'next/image';
 import {useEffect, useState} from 'react';
-import {type} from 'os';
 
+// @ts-ignore
 const Timeline = ({ items }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -22,6 +22,7 @@ const Timeline = ({ items }) => {
 
   return (
     <ol className="relative border-l border-gray-200 dark:border-gray-700">
+      {/* @ts-ignore */}
       {items.map(({ id, title, heroImage, startDate, endDate }) => {
         const playing = currentDate > new Date(startDate) && currentDate < new Date(endDate);
         const finished = currentDate >= new Date(endDate);
@@ -49,7 +50,6 @@ const Timeline = ({ items }) => {
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
               </div>
             </div>
-            {/*<p className="text-base font-normal text-gray-500 dark:text-gray-400">All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.</p>*/}
           </li>
         );
       })}
